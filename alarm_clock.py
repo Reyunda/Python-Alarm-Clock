@@ -12,10 +12,14 @@ import random
 import webbrowser
 
 # If video URL file does not exist, create one
+print("Please enter URL(s) of YouTube video(s) to be used as alarm!")
+url = input()
+
 if not os.path.isfile("youtube_alarm_videos.txt"):
 	print('Creating "youtube_alarm_videos.txt"...')
 	with open("youtube_alarm_videos.txt", "w") as alarm_file:
-		alarm_file.write("https://www.youtube.com/watch?v=anM6uIZvx74")
+		# alarm_file.write("https://www.youtube.com/watch?v=anM6uIZvx74")
+		alarm_file.write(url + "\n")
 
 def check_alarm_input(alarm_time):
 	"""Checks to see if the user has entered in a valid alarm time"""
@@ -71,8 +75,8 @@ time.sleep(time_diff_seconds)
 print("Wake Up!")
 
 # Load list of possible video URLs
-with open("youtube_alarm_videos.txt", "r") as alarm_file:
-	videos = alarm_file.readlines()
+# with open("youtube_alarm_videos.txt", "r") as alarm_file:
+#	videos = alarm_file.readlines()
 
 # Open a random video from the list
-webbrowser.open(random.choice(videos))
+webbrowser.open(random.choice(url.split()))
